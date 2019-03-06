@@ -1,0 +1,31 @@
+{
+  "name": "serverless-plugin-iopipe-layers",
+  "version": "1.0.0",
+  "description": "Serverless plugin to ad IOpipe lambda layers.",
+  "main": "dist/index.js",
+  "files": [
+	  "dist",
+	  "package.json",
+	  "README.md"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iopipe/serverless-plugin-iopipe-layers.git"
+  },
+  "author": "IOpipe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iopipe/serverless-plugin-iopipe-layers/issues"
+  },
+  "homepage": "https://github.com/iopipe/serverless-plugin-iopipe-layers#readme",
+  "devDependencies": {
+    "@types/serverless": "^1.18.1",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {}
+}
