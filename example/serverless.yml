@@ -1,0 +1,17 @@
+service: iopipe-layer-plugin-example
+
+provider:
+  name: aws
+  stage: prod
+  region: us-east-1
+
+plugins:
+  - serverless-plugin-iopipe-layer/index.js
+
+environment:
+  IOPIPE_TOKEN: ${env:IOPIPE_TOKEN}
+
+functions:
+  simple:
+    handler: handlers/simple.handler
+    runtime: nodejs6.10

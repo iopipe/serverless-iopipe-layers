@@ -4,9 +4,9 @@
   "description": "Serverless plugin to ad IOpipe lambda layers.",
   "main": "dist/index.js",
   "files": [
-	  "dist",
-	  "package.json",
-	  "README.md"
+    "dist",
+    "package.json",
+    "README.md"
   ],
   "scripts": {
     "build": "rm -rf dist && tsc",
@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/iopipe/serverless-plugin-iopipe-layers#readme",
   "devDependencies": {
+    "@types/node": "^11.10.5",
     "@types/serverless": "^1.18.1",
+    "serverless": "^1.38.0",
     "tslint": "^5.13.1",
     "typescript": "^3.3.3333"
   },
