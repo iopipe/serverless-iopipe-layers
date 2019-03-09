@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/iopipe/serverless-plugin-iopipe-layers#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.122",
     "@types/node": "^11.10.5",
     "@types/serverless": "^1.18.1",
     "prettier": "^1.16.4",
@@ -32,6 +33,7 @@
     "typescript": "^3.3.3333"
   },
   "dependencies": {
+    "lodash": "^4.17.11",
     "serverless": "^1.38.0"
   }
 }
