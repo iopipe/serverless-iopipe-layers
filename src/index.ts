@@ -20,6 +20,10 @@ export class IOpipeLayerPlugin {
     };
   }
 
+  get config() {
+    return _.get(this.serverless, "service.custom.iopipe", {});
+  }
+
   get functions() {
     return Object.assign.apply(
       null,
@@ -42,12 +46,26 @@ export class IOpipeLayerPlugin {
     this.serverless.cli.log(`Adding IOpipe layer to ${funcName}`);
 
     const region = _.get(this.serverless.service, "provider.region");
+    if (!region) {
+      this.serverless.cli.log(
+        "No AWS region specified for IOpipe layer, skipping"
+      );
+      return;
+    }
+
     const {
       environment = {},
       handler,
       runtime = _.get(this.serverless.service, "provider.runtime"),
       layers = []
     } = funcDef;
+
+    if (!this.config.token && !environment.IOPIPE_TOKEN) {
+      this.serverless.cli.log(
+        `No IOpipe token specified for "${funcName}", skipping`
+      );
+      return;
+    }
 
     const iopipeLayers = layers.filter(
       layer => typeof layer === "string" && layer.match("146318645305")
@@ -80,6 +98,13 @@ export class IOpipeLayerPlugin {
     funcDef.layers = layers;
 
     environment.IOPIPE_HANDLER = handler;
+    environment.IOPIPE_DEBUG =
+      typeof environment.IOPIPE_DEBUG !== "undefined"
+        ? environment.IOPIPE_DEBUG
+        : this.config.debug || false;
+    environment.IOPIPE_TOKEN = environment.IOPIPE_TOKEN
+      ? environment.IOPIPE_TOKEN
+      : this.config.token;
     funcDef.environment = environment;
 
     funcDef.handler = this.getHandlerWrapper(runtime, handler);

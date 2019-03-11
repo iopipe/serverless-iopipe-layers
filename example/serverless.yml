@@ -1,4 +1,4 @@
-service: iopipe-layer-plugin-example
+service: iopipe-layers-plugin-example
 
 provider:
   name: aws
@@ -6,12 +6,29 @@ provider:
   region: us-east-1
 
 plugins:
-  - serverless-plugin-iopipe-layer/index.js
+  - serverless-iopipe-layers/index.js
 
-environment:
-  IOPIPE_TOKEN: ${env:IOPIPE_TOKEN}
+custom:
+    iopipe:
+        token: ${env:IOPIPE_TOKEN}
 
 functions:
-  simple:
-    handler: handlers/simple.handler
+  layer-nodejs610:
+    handler: handlers/handler.handler
     runtime: nodejs6.10
+
+  layer-nodejs810:
+    handler: handlers/handler.handler
+    runtime: nodejs8.10
+
+  layer-python27:
+    handler: handlers/handler.handler
+    runtime: python2.7
+
+  layer-python36:
+    handler: handlers/handler.handler
+    runtime: python3.6
+
+  layer-python37:
+    handler: handlers/handler.handler
+    runtime: python3.7
