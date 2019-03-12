@@ -1,7 +1,7 @@
 # serverless-iopipe-layers
 
 A [Serverless](https://serverless.com) plugin to add [IOpipe](https://www.iopipe.com)
-observability using [AWS Lamba Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) without requiring a code change.
+observability using [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) without requiring a code change.
 
 ## Features
 
