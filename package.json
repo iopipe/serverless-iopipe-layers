@@ -1,6 +1,6 @@
 {
   "name": "serverless-plugin-iopipe-layers",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Serverless plugin to ad IOpipe lambda layers.",
   "main": "dist/index.js",
   "files": [
@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "release": "npm publish"
   },
   "repository": {
     "type": "git",
