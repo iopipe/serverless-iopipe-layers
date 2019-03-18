@@ -68,6 +68,10 @@ This plugin currently supports the following AWS runtimes:
 * python3.6
 * python3.7
 
+## Limitations
+
+* Doesn't currently support local invocation
+
 ## License
 
 Apache 2.0
