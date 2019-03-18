@@ -10,25 +10,26 @@ plugins:
 
 custom:
     iopipe:
+        debug: ttrue
         token: ${env:IOPIPE_TOKEN}
 
 functions:
   layer-nodejs610:
-    handler: handlers/handler.handler
+    handler: handler.handler
     runtime: nodejs6.10
 
   layer-nodejs810:
-    handler: handlers/handler.handler
+    handler: handler.handler
     runtime: nodejs8.10
 
   layer-python27:
-    handler: handlers/handler.handler
+    handler: handler.handler
     runtime: python2.7
 
   layer-python36:
-    handler: handlers/handler.handler
+    handler: handler.handler
     runtime: python3.6
 
   layer-python37:
-    handler: handlers/handler.handler
+    handler: handler.handler
     runtime: python3.7

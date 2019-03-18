@@ -7,7 +7,8 @@
     "build": "yarn clean && yarn buildPlugin && yarn buildPackage",
     "buildPackage": "LOCAL_PLUGIN=true SLS_DEBUG=* IOPIPE_TOKEN='test-token' sls package",
     "buildPlugin": "cd ../ && yarn build && mkdir -p example/.serverless_plugins && cp -rf dist example/.serverless_plugins/serverless-iopipe-layers",
-    "clean": "rm -rf .serverless_plugins"
+    "clean": "rm -rf .serverless_plugins",
+    "deploy": "yarn build && sls deploy"
   },
   "author": "",
   "license": "ISC",

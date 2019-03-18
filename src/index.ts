@@ -1,9 +1,12 @@
+import * as fs from "fs-extra";
+import * as path from "path";
+
 import * as _ from "lodash";
 import * as Serverless from "serverless";
 
 import * as layerArns from "./layers";
 
-export class IOpipeLayerPlugin {
+export default class IOpipeLayerPlugin {
   public serverless: Serverless;
   public options: Serverless.Options;
   public hooks: {
@@ -16,6 +19,7 @@ export class IOpipeLayerPlugin {
     this.options = options;
 
     this.hooks = {
+      "after:package:createDeploymentArtifacts": this.cleanup.bind(this),
       "before:package:createDeploymentArtifacts": this.run.bind(this)
     };
   }
@@ -40,6 +44,9 @@ export class IOpipeLayerPlugin {
       const funcDef = funcs[funcName];
       this.addLayer(funcName, funcDef);
     });
+  }
+  public cleanup() {
+    this.removeNodeHelper();
   }
 
   private addLayer(funcName: string, funcDef: any) {
@@ -108,8 +115,6 @@ export class IOpipeLayerPlugin {
     funcDef.environment = environment;
 
     funcDef.handler = this.getHandlerWrapper(runtime, handler);
-
-    this.serverless.cli.log(`${JSON.stringify(funcDef)}`);
   }
 
   private getLayerArn(runtime: string, region: string) {
@@ -121,7 +126,8 @@ export class IOpipeLayerPlugin {
 
   private getHandlerWrapper(runtime: string, handler: string) {
     if (runtime.match("nodejs")) {
-      return "@iopipe/iopipe.handler";
+      this.addNodeHelper();
+      return "iopipe_wrapper.handler";
     }
 
     if (runtime.match("python")) {
@@ -129,6 +135,30 @@ export class IOpipeLayerPlugin {
     }
 
     return handler;
+  }
+
+  private addNodeHelper() {
+    const helperPath = path.join(
+      this.serverless.config.servicePath,
+      "iopipe_wrapper.js"
+    );
+    if (!fs.existsSync(helperPath)) {
+      fs.writeFileSync(
+        helperPath,
+        "module.exports = require('@iopipe/iopipe');"
+      );
+    }
+  }
+
+  private removeNodeHelper() {
+    const helperPath = path.join(
+      this.serverless.config.servicePath,
+      "iopipe_wrapper.js"
+    );
+
+    if (fs.existsSync(helperPath)) {
+      fs.removeSync(helperPath);
+    }
   }
 }
 

@@ -18,7 +18,7 @@ REGIONS=(
   us-west-2
 )
 
-echo "module.exports = {"
+echo "const layers = {"
 
 echo "  \"nodejs6.10\": {"
 for region in "${REGIONS[@]}"; do
@@ -56,3 +56,8 @@ done
 echo "  }"
 
 echo "};"
+
+echo ""
+echo "export default layers;"
+export ""
+export "module.exports = layers;"
