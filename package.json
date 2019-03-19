@@ -1,5 +1,5 @@
 {
-  "name": "serverless-plugin-iopipe-layers",
+  "name": "serverless-iopipe-layers",
   "version": "0.1.0",
   "description": "Serverless plugin to ad IOpipe lambda layers.",
   "main": "dist/index.js",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/iopipe/serverless-plugin-iopipe-layers.git"
   },
   "author": "IOpipe",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/iopipe/serverless-plugin-iopipe-layers/issues"
   },
@@ -38,5 +38,20 @@
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.11",
     "serverless": "^1.38.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/iopipe/serverless-iopipe-layers/issues"
+  },
+  "keywords": [
+    "lambda",
+    "serverless",
+    "sls",
+    "agent",
+    "analytics",
+    "metrics",
+    "telemetry",
+    "tracing",
+    "distributed tracing",
+    "layers"
+  ]
 }
