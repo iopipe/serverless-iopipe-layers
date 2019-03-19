@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "release": "npm publish"
+    "release": "npm publish --access public"
   },
   "repository": {
     "type": "git",
