@@ -74,17 +74,6 @@ export default class IOpipeLayerPlugin {
       return;
     }
 
-    const iopipeLayers = layers.filter(
-      layer => typeof layer === "string" && layer.match("146318645305")
-    );
-
-    if (iopipeLayers.length) {
-      this.serverless.cli.log(
-        `Function "${funcName}" already specifies an IOpipe layer, skipping`
-      );
-      return;
-    }
-
     if (
       typeof runtime !== "string" ||
       [
@@ -101,8 +90,19 @@ export default class IOpipeLayerPlugin {
       return;
     }
 
-    layers.push(this.getLayerArn(runtime, region));
-    funcDef.layers = layers;
+    const layerArn = this.getLayerArn(runtime, region);
+    const iopipeLayers = layers.filter(
+      layer => typeof layer === "string" && layer.match(layerArn)
+    );
+
+    if (iopipeLayers.length) {
+      this.serverless.cli.log(
+        `Function "${funcName}" already specifies an IOpipe layer, skipping`
+      );
+    } else {
+      layers.push(layerArn);
+      funcDef.layers = layers;
+    }
 
     environment.IOPIPE_HANDLER = handler;
     environment.IOPIPE_DEBUG =
