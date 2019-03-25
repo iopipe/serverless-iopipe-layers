@@ -55,7 +55,7 @@ export default class IOpipeLayerPlugin {
     const region = _.get(this.serverless.service, "provider.region");
     if (!region) {
       this.serverless.cli.log(
-        "No AWS region specified for IOpipe layer, skipping"
+        "No AWS region specified for IOpipe layer; skipping."
       );
       return;
     }
@@ -69,18 +69,7 @@ export default class IOpipeLayerPlugin {
 
     if (!this.config.token && !environment.IOPIPE_TOKEN) {
       this.serverless.cli.log(
-        `No IOpipe token specified for "${funcName}", skipping`
-      );
-      return;
-    }
-
-    const iopipeLayers = layers.filter(
-      layer => typeof layer === "string" && layer.match("146318645305")
-    );
-
-    if (iopipeLayers.length) {
-      this.serverless.cli.log(
-        `Function "${funcName}" already specifies an IOpipe layer, skipping`
+        `No IOpipe token specified for "${funcName}"; skipping.`
       );
       return;
     }
@@ -96,13 +85,24 @@ export default class IOpipeLayerPlugin {
       ].indexOf(runtime) === -1
     ) {
       this.serverless.cli.log(
-        `Unsupported runtime "${runtime}" for Iopipe layer, skipping`
+        `Unsupported runtime "${runtime}" for Iopipe layer; skipping.`
       );
       return;
     }
 
-    layers.push(this.getLayerArn(runtime, region));
-    funcDef.layers = layers;
+    const layerArn = this.getLayerArn(runtime, region);
+    const iopipeLayers = layers.filter(
+      layer => typeof layer === "string" && layer.match(layerArn)
+    );
+
+    if (iopipeLayers.length) {
+      this.serverless.cli.log(
+        `Function "${funcName}" already specifies an IOpipe layer; skipping.`
+      );
+    } else {
+      layers.push(layerArn);
+      funcDef.layers = layers;
+    }
 
     environment.IOPIPE_HANDLER = handler;
     environment.IOPIPE_DEBUG =

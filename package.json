@@ -1,7 +1,7 @@
 {
   "name": "serverless-iopipe-layers",
-  "version": "0.1.0",
-  "description": "Serverless plugin to ad IOpipe lambda layers.",
+  "version": "0.1.1",
+  "description": "Serverless plugin to add IOpipe lambda layers.",
   "main": "dist/index.js",
   "files": [
     "dist",
