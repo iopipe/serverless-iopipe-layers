@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "release": "npm publish --access public"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
