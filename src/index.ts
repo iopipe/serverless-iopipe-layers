@@ -19,7 +19,9 @@ export default class IOpipeLayerPlugin {
     this.options = options;
 
     this.hooks = {
+      "after:deploy:function:packageFunction": this.cleanup.bind(this),
       "after:package:createDeploymentArtifacts": this.cleanup.bind(this),
+      "before:deploy:function:packageFunction": this.run.bind(this),
       "before:package:createDeploymentArtifacts": this.run.bind(this)
     };
   }
@@ -64,7 +66,8 @@ export default class IOpipeLayerPlugin {
       environment = {},
       handler,
       runtime = _.get(this.serverless.service, "provider.runtime"),
-      layers = []
+      layers = [],
+      package: pkg = {}
     } = funcDef;
 
     if (!this.config.token && !environment.IOPIPE_TOKEN) {
@@ -115,6 +118,7 @@ export default class IOpipeLayerPlugin {
     funcDef.environment = environment;
 
     funcDef.handler = this.getHandlerWrapper(runtime, handler);
+    funcDef.package = this.updatePackageExcludes(runtime, pkg);
   }
 
   private getLayerArn(runtime: string, region: string) {
@@ -159,6 +163,18 @@ export default class IOpipeLayerPlugin {
     if (fs.existsSync(helperPath)) {
       fs.removeSync(helperPath);
     }
+  }
+
+  private updatePackageExcludes(runtime: string, pkg: any) {
+    if (!runtime.match("nodejs")) {
+      return pkg;
+    }
+
+    const { exclude = [] } = pkg;
+    exclude.push("!iopipe_wrapper.js");
+    pkg.exclude = exclude;
+
+    return pkg;
   }
 }
 
