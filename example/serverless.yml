@@ -10,7 +10,7 @@ plugins:
 
 custom:
     iopipe:
-        debug: ttrue
+        debug: true
         token: ${env:IOPIPE_TOKEN}
 
 functions:
