@@ -93,6 +93,12 @@ export default class IOpipeLayerPlugin {
       return;
     }
 
+    const { exclude = [] } = this.config;
+    if (_.isArray(exclude) && exclude.indexOf(funcName) !== -1) {
+      this.serverless.cli.log(`Excluded function ${funcName}; skipping`);
+      return;
+    }
+
     const layerArn = this.getLayerArn(runtime, region);
     const iopipeLayers = layers.filter(
       layer => typeof layer === "string" && layer.match(layerArn)

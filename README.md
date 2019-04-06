@@ -58,6 +58,25 @@ The IOpipe token to use.
 
 Whether or not to enable debug mode. Must be a boolean value.
 
+```yaml
+config:
+  iopipe:
+    debug: true
+```
+
+#### `exclude` (optional)
+
+An array of functions to exclude from automatic wrapping.
+
+```yaml
+config:
+  iopipe:
+    exclude:
+      - excluded-func-1
+      - another-excluded-func
+```
+
+
 ## Supported Runtimes
 
 This plugin currently supports the following AWS runtimes:
