@@ -25,10 +25,6 @@ jobs:
       - restore_cache:
           key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn build
-      - save_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - dist
 
   release:
     <<: *defaults
@@ -37,8 +33,8 @@ jobs:
       - restore_cache:
           keys:
             - yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run: cp .npmrc-ci .npmrc
+      - run: yarn build
       - run: npm publish --access public
 
 workflows:
