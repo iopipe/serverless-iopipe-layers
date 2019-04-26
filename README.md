@@ -76,6 +76,16 @@ config:
       - another-excluded-func
 ```
 
+#### `prepend` (optional)
+
+Whether or not to prepend the IOpipe layer. Defaults to `false` which appends the layer.
+
+```yaml
+config:
+  iopipe:
+    prepend: true
+```
+
 
 ## Supported Runtimes
 
