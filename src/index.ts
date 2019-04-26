@@ -109,7 +109,11 @@ export default class IOpipeLayerPlugin {
         `Function "${funcName}" already specifies an IOpipe layer; skipping.`
       );
     } else {
-      layers.push(layerArn);
+      if (typeof this.config.prepend === "boolean" && this.config.prepend) {
+        layers.unshift(layerArn);
+      } else {
+        layers.push(layerArn);
+      }
       funcDef.layers = layers;
     }
 
