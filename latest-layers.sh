@@ -59,5 +59,5 @@ echo "};"
 
 echo ""
 echo "export default layers;"
-export ""
-export "module.exports = layers;"
+echo ""
+echo "module.exports = layers;"
