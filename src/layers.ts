@@ -61,78 +61,78 @@ const layers = {
   },
   "python2.7": {
     "ap-northeast-1":
-      "arn:aws:lambda:ap-northeast-1:146318645305:layer:IOpipePython27:14",
+      "arn:aws:lambda:ap-northeast-1:146318645305:layer:IOpipePython27:16",
     "ap-northeast-2":
-      "arn:aws:lambda:ap-northeast-2:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:ap-northeast-2:146318645305:layer:IOpipePython27:14",
     "ap-south-1":
-      "arn:aws:lambda:ap-south-1:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:ap-south-1:146318645305:layer:IOpipePython27:14",
     "ap-southeast-1":
-      "arn:aws:lambda:ap-southeast-1:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:ap-southeast-1:146318645305:layer:IOpipePython27:14",
     "ap-southeast-2":
-      "arn:aws:lambda:ap-southeast-2:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:ap-southeast-2:146318645305:layer:IOpipePython27:14",
     "ca-central-1":
-      "arn:aws:lambda:ca-central-1:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:ca-central-1:146318645305:layer:IOpipePython27:14",
     "eu-central-1":
-      "arn:aws:lambda:eu-central-1:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:eu-central-1:146318645305:layer:IOpipePython27:14",
     "eu-west-1":
-      "arn:aws:lambda:eu-west-1:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:eu-west-1:146318645305:layer:IOpipePython27:14",
     "eu-west-2":
-      "arn:aws:lambda:eu-west-2:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:eu-west-2:146318645305:layer:IOpipePython27:14",
     "eu-west-3":
-      "arn:aws:lambda:eu-west-3:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:eu-west-3:146318645305:layer:IOpipePython27:14",
     "us-east-1":
-      "arn:aws:lambda:us-east-1:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:us-east-1:146318645305:layer:IOpipePython27:14",
     "us-east-2":
-      "arn:aws:lambda:us-east-2:146318645305:layer:IOpipePython27:12",
+      "arn:aws:lambda:us-east-2:146318645305:layer:IOpipePython27:14",
     "us-west-1":
-      "arn:aws:lambda:us-west-1:146318645305:layer:IOpipePython27:12",
-    "us-west-2": "arn:aws:lambda:us-west-2:146318645305:layer:IOpipePython27:12"
+      "arn:aws:lambda:us-west-1:146318645305:layer:IOpipePython27:14",
+    "us-west-2": "arn:aws:lambda:us-west-2:146318645305:layer:IOpipePython27:14"
   },
   "python3.6": {
     "ap-northeast-1":
-      "arn:aws:lambda:ap-northeast-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-northeast-1:146318645305:layer:IOpipePython:14",
     "ap-northeast-2":
-      "arn:aws:lambda:ap-northeast-2:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-northeast-2:146318645305:layer:IOpipePython:14",
     "ap-south-1":
-      "arn:aws:lambda:ap-south-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-south-1:146318645305:layer:IOpipePython:14",
     "ap-southeast-1":
-      "arn:aws:lambda:ap-southeast-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-southeast-1:146318645305:layer:IOpipePython:14",
     "ap-southeast-2":
-      "arn:aws:lambda:ap-southeast-2:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-southeast-2:146318645305:layer:IOpipePython:14",
     "ca-central-1":
-      "arn:aws:lambda:ca-central-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ca-central-1:146318645305:layer:IOpipePython:14",
     "eu-central-1":
-      "arn:aws:lambda:eu-central-1:146318645305:layer:IOpipePython:12",
-    "eu-west-1": "arn:aws:lambda:eu-west-1:146318645305:layer:IOpipePython:12",
-    "eu-west-2": "arn:aws:lambda:eu-west-2:146318645305:layer:IOpipePython:12",
-    "eu-west-3": "arn:aws:lambda:eu-west-3:146318645305:layer:IOpipePython:12",
-    "us-east-1": "arn:aws:lambda:us-east-1:146318645305:layer:IOpipePython:13",
-    "us-east-2": "arn:aws:lambda:us-east-2:146318645305:layer:IOpipePython:12",
-    "us-west-1": "arn:aws:lambda:us-west-1:146318645305:layer:IOpipePython:12",
-    "us-west-2": "arn:aws:lambda:us-west-2:146318645305:layer:IOpipePython:12"
+      "arn:aws:lambda:eu-central-1:146318645305:layer:IOpipePython:14",
+    "eu-west-1": "arn:aws:lambda:eu-west-1:146318645305:layer:IOpipePython:14",
+    "eu-west-2": "arn:aws:lambda:eu-west-2:146318645305:layer:IOpipePython:14",
+    "eu-west-3": "arn:aws:lambda:eu-west-3:146318645305:layer:IOpipePython:14",
+    "us-east-1": "arn:aws:lambda:us-east-1:146318645305:layer:IOpipePython:15",
+    "us-east-2": "arn:aws:lambda:us-east-2:146318645305:layer:IOpipePython:14",
+    "us-west-1": "arn:aws:lambda:us-west-1:146318645305:layer:IOpipePython:14",
+    "us-west-2": "arn:aws:lambda:us-west-2:146318645305:layer:IOpipePython:14"
   },
   "python3.7": {
     "ap-northeast-1":
-      "arn:aws:lambda:ap-northeast-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-northeast-1:146318645305:layer:IOpipePython:14",
     "ap-northeast-2":
-      "arn:aws:lambda:ap-northeast-2:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-northeast-2:146318645305:layer:IOpipePython:14",
     "ap-south-1":
-      "arn:aws:lambda:ap-south-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-south-1:146318645305:layer:IOpipePython:14",
     "ap-southeast-1":
-      "arn:aws:lambda:ap-southeast-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-southeast-1:146318645305:layer:IOpipePython:14",
     "ap-southeast-2":
-      "arn:aws:lambda:ap-southeast-2:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ap-southeast-2:146318645305:layer:IOpipePython:14",
     "ca-central-1":
-      "arn:aws:lambda:ca-central-1:146318645305:layer:IOpipePython:12",
+      "arn:aws:lambda:ca-central-1:146318645305:layer:IOpipePython:14",
     "eu-central-1":
-      "arn:aws:lambda:eu-central-1:146318645305:layer:IOpipePython:12",
-    "eu-west-1": "arn:aws:lambda:eu-west-1:146318645305:layer:IOpipePython:12",
-    "eu-west-2": "arn:aws:lambda:eu-west-2:146318645305:layer:IOpipePython:12",
-    "eu-west-3": "arn:aws:lambda:eu-west-3:146318645305:layer:IOpipePython:12",
-    "us-east-1": "arn:aws:lambda:us-east-1:146318645305:layer:IOpipePython:13",
-    "us-east-2": "arn:aws:lambda:us-east-2:146318645305:layer:IOpipePython:12",
-    "us-west-1": "arn:aws:lambda:us-west-1:146318645305:layer:IOpipePython:12",
-    "us-west-2": "arn:aws:lambda:us-west-2:146318645305:layer:IOpipePython:12"
+      "arn:aws:lambda:eu-central-1:146318645305:layer:IOpipePython:14",
+    "eu-west-1": "arn:aws:lambda:eu-west-1:146318645305:layer:IOpipePython:14",
+    "eu-west-2": "arn:aws:lambda:eu-west-2:146318645305:layer:IOpipePython:14",
+    "eu-west-3": "arn:aws:lambda:eu-west-3:146318645305:layer:IOpipePython:14",
+    "us-east-1": "arn:aws:lambda:us-east-1:146318645305:layer:IOpipePython:15",
+    "us-east-2": "arn:aws:lambda:us-east-2:146318645305:layer:IOpipePython:14",
+    "us-west-1": "arn:aws:lambda:us-west-1:146318645305:layer:IOpipePython:14",
+    "us-west-2": "arn:aws:lambda:us-west-2:146318645305:layer:IOpipePython:14"
   }
 };
 
