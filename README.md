@@ -3,6 +3,10 @@
 A [Serverless](https://serverless.com) plugin to add [IOpipe](https://www.iopipe.com)
 observability using [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) without requiring a code change.
 
+## Requirements
+
+* serverless >= 1.34.0
+
 ## Features
 
 * Supports Node.js and Python runtimes (more runtimes to come)
