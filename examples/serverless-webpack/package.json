@@ -1,19 +1,20 @@
 {
-  "name": "iopipe-layer-plugin-example",
+  "name": "iopipe-layers-plugin-webpack-example",
   "version": "0.0.0-test",
   "description": "",
   "main": "handler.js",
   "scripts": {
     "build": "yarn clean && yarn buildPlugin && yarn buildPackage",
     "buildPackage": "LOCAL_PLUGIN=true SLS_DEBUG=* IOPIPE_TOKEN='test-token' sls package",
-    "buildPlugin": "cd ../ && yarn build && mkdir -p example/.serverless_plugins && cp -rf dist example/.serverless_plugins/serverless-iopipe-layers",
+    "buildPlugin": "cd ../../ && yarn build && mkdir -p examples/serverless-webpack/.serverless_plugins && cp -rf dist examples/serverless-webpack/.serverless_plugins/serverless-iopipe-layers",
     "clean": "rm -rf .serverless_plugins",
     "deploy": "yarn build && sls deploy"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "serverless": "^1.38.0"
+    "serverless": "^1.38.0",
+    "serverless-webpack": "^5.3.1"
   },
   "dependencies": {}
 }
