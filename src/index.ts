@@ -2,6 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 
 import * as _ from "lodash";
+import * as semver from "semver";
 import * as Serverless from "serverless";
 
 import * as layerArns from "./layers";
@@ -40,6 +41,15 @@ export default class IOpipeLayerPlugin {
   }
 
   public run() {
+    const version = this.serverless.getVersion();
+
+    if (semver.lt(version, "1.34.0")) {
+      this.serverless.cli.log(
+        `Serverless ${version} does not support layers. Please upgrade to >=1.34.0.`
+      );
+      return;
+    }
+
     const funcs = this.functions;
 
     Object.keys(funcs).forEach(funcName => {
@@ -47,6 +57,7 @@ export default class IOpipeLayerPlugin {
       this.addLayer(funcName, funcDef);
     });
   }
+
   public cleanup() {
     this.removeNodeHelper();
   }
