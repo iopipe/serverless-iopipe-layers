@@ -32,6 +32,15 @@ functions:
         - handler.js
     runtime: nodejs8.10
 
+  layer-nodejs10:
+    handler: handler.handler
+    package:
+      exclude:
+        - ./**
+      include:
+        - handler.js
+    runtime: nodejs10.x
+
   layer-python27:
     handler: handler.handler
     package:

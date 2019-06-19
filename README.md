@@ -97,6 +97,7 @@ This plugin currently supports the following AWS runtimes:
 
 * nodejs6.10
 * nodejs8.10
+* nodejs10.x
 * python2.7
 * python3.6
 * python3.7
