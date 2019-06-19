@@ -91,6 +91,7 @@ export default class IOpipeLayerPlugin {
     if (
       typeof runtime !== "string" ||
       [
+        "nodejs10.x",
         "nodejs6.10",
         "nodejs8.10",
         "python2.7",
