@@ -1,0 +1,20 @@
+service: iopipe-layers-plugins-webpack-example
+
+provider:
+  name: aws
+  stage: prod
+  region: us-east-1
+  runtime: nodejs10.x
+
+plugins:
+  - serverless-webpack
+  - serverless-iopipe-layers
+
+custom:
+    iopipe:
+        debug: true
+        token: ${env:IOPIPE_TOKEN}
+
+functions:
+  handler:
+    handler: handler.handler
