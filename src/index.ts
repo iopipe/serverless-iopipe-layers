@@ -50,6 +50,20 @@ export default class IOpipeLayerPlugin {
       return;
     }
 
+    const plugins = _.get(this.serverless, "service.plugins", []);
+
+    this.serverless.cli.log(`Plugins: ${JSON.stringify(plugins)}`);
+
+    if (
+      plugins.indexOf("serverless-webpack") >
+      plugins.indexOf("serverless-iopipe-layers")
+    ) {
+      this.serverless.cli.log(
+        "serverless-iopipe-layers plugin must come after serverless-webpack in serverless.yml; skipping."
+      );
+      return;
+    }
+
     const funcs = this.functions;
 
     Object.keys(funcs).forEach(funcName => {
@@ -151,9 +165,13 @@ export default class IOpipeLayerPlugin {
   }
 
   private getHandlerWrapper(runtime: string, handler: string) {
-    if (runtime.match("nodejs")) {
+    if (["nodejs6.10", "nodejs8.10"].indexOf(runtime) !== -1) {
       this.addNodeHelper();
       return "iopipe_wrapper.handler";
+    }
+
+    if (runtime === "nodejs10.x") {
+      return "/opt/nodejs/node_modules/@iopipe/iopipe.handler";
     }
 
     if (runtime.match("python")) {
@@ -166,7 +184,7 @@ export default class IOpipeLayerPlugin {
   private addNodeHelper() {
     const helperPath = path.join(
       this.serverless.config.servicePath,
-      "iopipe_wrapper.js"
+      "iopipe-wrapper.js"
     );
     if (!fs.existsSync(helperPath)) {
       fs.writeFileSync(
@@ -179,7 +197,7 @@ export default class IOpipeLayerPlugin {
   private removeNodeHelper() {
     const helperPath = path.join(
       this.serverless.config.servicePath,
-      "iopipe_wrapper.js"
+      "iopipe-wrapper.js"
     );
 
     if (fs.existsSync(helperPath)) {
@@ -193,7 +211,7 @@ export default class IOpipeLayerPlugin {
     }
 
     const { exclude = [] } = pkg;
-    exclude.push("!iopipe_wrapper.js");
+    exclude.push("!iopipe-wrapper.js");
     pkg.exclude = exclude;
 
     return pkg;
