@@ -167,7 +167,7 @@ export default class IOpipeLayerPlugin {
   private getHandlerWrapper(runtime: string, handler: string) {
     if (["nodejs6.10", "nodejs8.10"].indexOf(runtime) !== -1) {
       this.addNodeHelper();
-      return "iopipe_wrapper.handler";
+      return "iopipe-wrapper.handler";
     }
 
     if (runtime === "nodejs10.x") {
