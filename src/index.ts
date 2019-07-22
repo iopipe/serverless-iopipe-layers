@@ -158,10 +158,7 @@ export default class IOpipeLayerPlugin {
   }
 
   private getLayerArn(runtime: string, region: string) {
-    return _.chain(layerArns)
-      .get(runtime)
-      .get(region)
-      .value();
+    return _.get(layerArns, [runtime, region]);
   }
 
   private getHandlerWrapper(runtime: string, handler: string) {
