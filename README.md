@@ -106,6 +106,10 @@ This plugin currently supports the following AWS runtimes:
 
 When using with [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack) it is highly recommended to use the `nodejs10.x` runtime as this runtime does not require a helper script. For earlier Node.js runtimes a helper script is required which must be included via your `webpack.config.js`. The `serveless-iopipe-layers` plugin must follow the `serverless-webpack` plugin in your `serverless.yml`. See [here](https://github.com/iopipe/serverless-iopipe-layers/tree/master/examples/serverless-webpack) for an example.
 
+### Using with Serverless Enterprise
+
+When using with the [Serverless Enterprise Plugin](https://github.com/serverless/enterprise-plugin), because this plugin uses a similar method to wrap functions, a helper script must be used. If using with `serverless-webpack`, the helper script must be included in your `webpack.config.js` as described above.
+
 ## Limitations
 
 * Doesn't currently support local invocation
