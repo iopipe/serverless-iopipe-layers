@@ -14,15 +14,6 @@ custom:
         token: ${env:IOPIPE_TOKEN}
 
 functions:
-  layer-nodejs610:
-    handler: handler.handler
-    package:
-      exclude:
-        - ./**
-      include:
-        - handler.js
-    runtime: nodejs6.10
-
   layer-nodejs810:
     handler: handler.handler
     package:
