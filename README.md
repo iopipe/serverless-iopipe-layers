@@ -63,7 +63,7 @@ The IOpipe token to use.
 Whether or not to enable debug mode. Must be a boolean value.
 
 ```yaml
-config:
+custom:
   iopipe:
     debug: true
 ```
@@ -73,7 +73,7 @@ config:
 An array of functions to exclude from automatic wrapping.
 
 ```yaml
-config:
+custom:
   iopipe:
     exclude:
       - excluded-func-1
@@ -85,7 +85,7 @@ config:
 Whether or not to prepend the IOpipe layer. Defaults to `false` which appends the layer.
 
 ```yaml
-config:
+custom:
   iopipe:
     prepend: true
 ```
