@@ -80,6 +80,10 @@ config:
       - another-excluded-func
 ```
 
+#### `layer_arn` (optional)
+
+Pin to a specific layer version. The latest layer ARN is automatically fetched from the [IOpipe Layers API](https://layers.iopipe.com)
+
 #### `prepend` (optional)
 
 Whether or not to prepend the IOpipe layer. Defaults to `false` which appends the layer.

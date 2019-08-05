@@ -126,7 +126,8 @@ export default class IOpipeLayerPlugin {
       return;
     }
 
-    const layerArn = await this.getLayerArn(runtime, region);
+    const layerArn = this.config.layer_arn ? this.config.layer_arn : await this.getLayerArn(runtime, region);
+
     const iopipeLayers = layers.filter(
       layer => typeof layer === "string" && layer.match(layerArn)
     );
