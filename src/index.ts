@@ -1,11 +1,12 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import * as util from "util";
 
 import * as _ from "lodash";
+import * as request from "request"
 import * as semver from "semver";
 import * as Serverless from "serverless";
 
-import * as layerArns from "./layers";
 
 export default class IOpipeLayerPlugin {
   public serverless: Serverless;
@@ -40,7 +41,7 @@ export default class IOpipeLayerPlugin {
     );
   }
 
-  public run() {
+  public async run() {
     const version = this.serverless.getVersion();
 
     if (semver.lt(version, "1.34.0")) {
@@ -66,9 +67,9 @@ export default class IOpipeLayerPlugin {
 
     const funcs = this.functions;
 
-    Object.keys(funcs).forEach(funcName => {
+    Object.keys(funcs).forEach(async funcName => {
       const funcDef = funcs[funcName];
-      this.addLayer(funcName, funcDef);
+      await this.addLayer(funcName, funcDef);
     });
   }
 
@@ -76,7 +77,7 @@ export default class IOpipeLayerPlugin {
     this.removeNodeHelper();
   }
 
-  private addLayer(funcName: string, funcDef: any) {
+  private async addLayer(funcName: string, funcDef: any) {
     this.serverless.cli.log(`Adding IOpipe layer to ${funcName}`);
 
     const region = _.get(this.serverless.service, "provider.region");
@@ -125,7 +126,8 @@ export default class IOpipeLayerPlugin {
       return;
     }
 
-    const layerArn = this.getLayerArn(runtime, region);
+    const layerArn = this.config.layer_arn ? this.config.layer_arn : await this.getLayerArn(runtime, region);
+
     const iopipeLayers = layers.filter(
       layer => typeof layer === "string" && layer.match(layerArn)
     );
@@ -157,8 +159,13 @@ export default class IOpipeLayerPlugin {
     funcDef.package = this.updatePackageExcludes(runtime, pkg);
   }
 
-  private getLayerArn(runtime: string, region: string) {
-    return _.get(layerArns, [runtime, region]);
+  private async getLayerArn(runtime: string, region: string) {
+    return util.promisify(request)(`https://${region}.layers.iopipe.com/get-layers?CompatibleRuntime=${runtime}`).then(
+      (response) => {
+        const awsResp = JSON.parse(response.body)
+        return _.get(awsResp, "Layers[0].LatestMatchingVersion.LayerVersionArn")
+      }
+    )
   }
 
   private getHandlerWrapper(runtime: string, handler: string) {
