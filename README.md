@@ -99,7 +99,7 @@ custom:
 
 This plugin currently supports the following AWS runtimes:
 
-* nodejs6.10
+* nodejs6.10 (deprecated)
 * nodejs8.10
 * nodejs10.x
 * python2.7
