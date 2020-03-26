@@ -1,3 +1,7 @@
+# Notice
+
+IOpipe has been acquired by New Relic. Please migrate to the equivalent [New Relic Serverless plugin](https://github.com/iopipe/serverless-newrelic-lambda-layers).
+
 # serverless-iopipe-layers
 
 A [Serverless](https://serverless.com) plugin to add [IOpipe](https://www.iopipe.com)
